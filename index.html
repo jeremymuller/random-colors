@@ -17,8 +17,13 @@
 	  
 	  	let timing = 1;
 		
+		let r = Math.floor(Math.random() * colors.length);
+		
 		function loop() {
-			let r = Math.floor(Math.random() * colors.length);
+			let newR = Math.floor(Math.random() * colors.length);
+			while (newR == r) 
+				newR = Math.floor(Math.random() * colors.length);
+			r = newR;
 			document.body.style.background = colors[r];
 			setTimeout(loop, timing * 1000);	
 		}
