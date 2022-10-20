@@ -5,22 +5,33 @@
 	<meta charset="UTF-8">
 	<title>Random Colors</title>
 
-	<!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
-
 </head>
 
 <body>
+
+	<input id="seconds" type="range" min="1" max="120" value="1" />
+	<div id="display" style="font-size: 5em; font-family: Arial; color: white">1</div>
 	
-  <script>
-  	let colors = ['#FF0000', '#83FF7C', '#FFFFB4', '#0000FF', '#F5B000', '#F200FF'];
+	<script>
+		let colors = ['#FF0000', '#83FF7C', '#FFFFB4', '#0000FF', '#F5B000', '#F200FF'];
 	  
-	setInterval(() => {
-		let r = Math.floor(Math.random() * colors.length);
-		document.body.style.background = colors[r];
-	}, 1000);
+	  	let timing = 1;
+		
+		function loop() {
+			let r = Math.floor(Math.random() * colors.length);
+			document.body.style.background = colors[r];
+			setTimeout(loop, timing * 1000);	
+		}
+	  
+		document.querySelector('input[type="range"]').addEventListener('input', function(e) {
+			timing = parseInt(this.value);
+			document.querySelector('#display').innerHTML = this.value;
+		});
+
+		loop();
 
   
-  </script>
+  	</script>
   
 </body>
 
