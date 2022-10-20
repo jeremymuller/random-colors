@@ -14,7 +14,7 @@
   <script>
   	let colors = ['#FF0000', '#83FF7C', '#FFFFB4', '#0000FF', '#F5B000', '#F200FF'];
 	  
-	setTimeout(() => {
+	setInterval(() => {
 		let r = Math.floor(Math.random() * colors.length);
 		document.body.style.background = colors[r];
 	}, 1000);
