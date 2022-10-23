@@ -30,7 +30,7 @@
 	  
 		document.querySelector('input[type="range"]').addEventListener('input', function(e) {
 			timing = parseInt(this.value);
-			document.querySelector('#display').innerHTML = this.value;
+			document.querySelector('#display').innerHTML = this.value + ' seconds';
 		});
 
 		loop();
