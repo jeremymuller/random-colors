@@ -11,33 +11,34 @@
 
 	<input id="seconds" type="range" min="1" max="120" value="1" />
 	<div id="display" style="font-size: 5em; font-family: Arial; color: white">1 second</div>
-	
+	<div id="color-name" style="font-size: 5em; font-family: Arial; color: white; background: black; width: 25%; text-align: center"></div>
+
 	<script>
 		let colors = ['#FF0000', '#83FF7C', '#FFFFB4', '#0000FF', '#F5B000', '#F200FF'];
-	  
-	  	let timing = 1;
-		
+		let names = ['red', 'green', 'yellow', 'blue', 'orange', 'pink'];
+
+		let timing = 1;
+
 		let r = Math.floor(Math.random() * colors.length);
-		
+
 		function loop() {
 			let newR = Math.floor(Math.random() * colors.length);
-			while (newR == r) 
+			while (newR == r)
 				newR = Math.floor(Math.random() * colors.length);
 			r = newR;
 			document.body.style.background = colors[r];
-			setTimeout(loop, timing * 1000);	
+			document.querySelector('#color-name').innerHTML = names[r];
+			setTimeout(loop, timing * 1000);
 		}
-	  
+
 		document.querySelector('input[type="range"]').addEventListener('input', function(e) {
 			timing = parseInt(this.value);
 			document.querySelector('#display').innerHTML = this.value + (this.value < 2 ? ' second' : ' seconds');
 		});
 
 		loop();
+	</script>
 
-  
-  	</script>
-  
 </body>
 
 </html>
